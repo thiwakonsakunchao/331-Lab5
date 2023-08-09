@@ -55,13 +55,13 @@ const hasNextPage = computed(() => {
 <template>
   <main class="flex flex-col items-center">
     <EventCard v-for="event in events" :key="event.id" :event="event"></EventCard>
-    <div class="pagination">
+    <div class="flex w-72 justify-between">
       <RouterLink :to="{ name: 'event-list', query: { page: page - 1, limit: limit } }" rel="prev" v-if="page != 1"
-        id="page-prev"> Prev
+        class="text-left text-gray-700 no-underline" id="page-prev"> Prev
         Page
       </RouterLink>
       <RouterLink :to="{ name: 'event-list', query: { page: page + 1, limit: limit } }" rel="next" v-if="hasNextPage"
-        id="page-next">
+      class=" text-right text-gray-700 no-underline" id="page-next">
         Next Page
       </RouterLink>
     </div>
@@ -70,22 +70,5 @@ const hasNextPage = computed(() => {
 </template>
 
 <style scoped>
-.pagination {
-  display: flex;
-  width: 290px;
-}
 
-.pagination a {
-  flex: 1;
-  text-decoration: none;
-  color: #2c3e50;
-}
-
-#page-prev {
-  text-align: left;
-}
-
-#page-next {
-  text-align: right;
-}
 </style>
